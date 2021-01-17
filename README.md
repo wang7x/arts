@@ -19,24 +19,29 @@ one ARTS per week routine
 ### The purpose of ARTS
 
 - A for Algorithm, learn the Algorithm
-- R for Review, learn the English
+- R for Review, learn English
 - T for Tip, learn the Techniques
 - S for Share, learn how to influence people
 
-### Algroithm
+### Algorithm
 
-每周至少做一个Leetcode的算法题.只要是为了编程训练和学习.
-如果不训练你看再多的算法书,你依然不会做算法题
+每周至少做一个Leetcode的算法题，主要是为了编程训练和学习，​
+如果不训练就算看再多的算法书，依然不会做算法题。
 
 ### Review
 
-阅读并点评至少一篇英文技术文章.主要是为了学习英文,
-如果你的英文不行,基本上无缘技术高手
+每周阅读并点评至少一篇英文技术文章，主要是为了学习英文。目前的技术环境下，如果你的英文不行，基本上无缘技术高手。
 
 ### Tip
 
-学习至少一个技术技巧.主要是为了总结和归纳你在日常工作中遇到的知识点.
+每周学习至少一个技术技巧，主要是为了总结和归纳在日常工作中遇到的知识点。
 
 ### Share
 
-分享一篇有观点和思考的技术文章.主要是为了建立你的影响力,能够输出价值观.
+每周分享一篇有观点和思考的技术文章，主要是为了建立技术影响力，能够输出价值观。
+
+## ARTS Records
+
+| #                                  | Date       | Week   |
+| ---------------------------------- | ---------- | ------ |
+| [A001](./notes/2021-01-16-A001.md) | 2021-01-16 | 2021W2 |

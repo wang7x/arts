@@ -1,4 +1,6 @@
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.logging.Logger;
 
 /*
  * @lc app=leetcode id=1 lang=java
@@ -29,25 +31,64 @@ import java.util.HashMap;
  *
  *
  */
-
-/**
- * 暴力搜索 Brute Force
- *
- * ERROR 1: 因为没注意startIndex和endIndex的最大边界值
- *
- * Time complexity:O(n²) Space complexity:O(1) Runtime: 18ms Memory: 37.9 MB
- */
 class Solution {
 
     public int[] twoSum(int[] nums, int target) {
+        return twoSumSolution2(nums, target);
+    }
+
+    private static final Logger LOGGER = Logger.getLogger(Solution.class.getName());
+
+    public static void main(String[] args) {
+        try {
+            Solution s = new Solution();
+
+            if (!Arrays.equals(s.twoSum(new int[] { 2, 7, 11, 15 }, 9), new int[] { 0, 1 })) {
+                throw new AssertionError();
+            }
+
+            if (!Arrays.equals(s.twoSum(new int[] { 1, 2, 7, 11, 15 }, 9), new int[] { 1, 2 })) {
+                throw new AssertionError();
+            }
+
+            if (!Arrays.equals(s.twoSum(new int[] { 3, 2, 4 }, 6), new int[] { 1, 2 })) {
+                throw new AssertionError();
+            }
+
+            if (!Arrays.equals(s.twoSum(new int[] { 1, 3, 3 }, 6), new int[] { 1, 2 })) {
+                throw new AssertionError();
+            }
+
+            if (!Arrays.equals(s.twoSum(new int[] { 3, 3 }, 6), new int[] { 0, 1 })) {
+                throw new AssertionError();
+            }
+
+            LOGGER.info("Tests passed!");
+        } catch (AssertionError e) {
+            LOGGER.severe("Tests failed!");
+        }
+    }
+
+    private static final String MSG_NUMS_IS_NULL = "nums is null";
+    private static final String MSG_NUMS_IS_LESS_THAN_TWO = "nums less than 2 element";
+    private static final String MSG_NOT_FOUND = "Not Found";
+
+    /**
+     * 暴力搜索 Brute Force
+     *
+     * ERROR 1: 因为没注意startIndex和endIndex的最大边界值
+     *
+     * Time complexity:O(n²) Space complexity:O(1)
+     */
+    int[] twoSumSolution0(int[] nums, int target) {
         if (nums == null) {
-            throw new IllegalArgumentException("nums is null");
+            throw new IllegalArgumentException(MSG_NUMS_IS_NULL);
         }
 
         int length = nums.length;
 
         if (length < 2) {
-            throw new IllegalArgumentException("nums less than 2 element");
+            throw new IllegalArgumentException(MSG_NUMS_IS_LESS_THAN_TWO);
         }
 
         for (int startIndex = 0; startIndex <= length - 2; startIndex++) {
@@ -58,29 +99,27 @@ class Solution {
             }
         }
 
-        throw new IllegalArgumentException("Not Found");
+        throw new IllegalArgumentException(MSG_NOT_FOUND);
     }
-}
 
-/**
- * Two-pass Hash Table
- *
- * 利用hash table的查找复杂度是O(1)的特性,将搜索时间简化
- *
- * Time complexity:O(n) Space complexity:O(n) Runtime: 3ms Memory: 37.9 MB
- */
-class Solution {
-    public int[] twoSum(int[] nums, int target) {
+    int[] twoSumSolution1(int[] nums, int target) {
         if (nums == null) {
-            throw new IllegalArgumentException("nums is null");
+            throw new IllegalArgumentException(MSG_NUMS_IS_NULL);
         }
 
         int length = nums.length;
 
         if (length < 2) {
-            throw new IllegalArgumentException("nums less than 2 element");
+            throw new IllegalArgumentException(MSG_NUMS_IS_LESS_THAN_TWO);
         }
 
+        /**
+         * Two-pass Hash Table
+         *
+         * 利用hash table的查找复杂度是O(1)的特性,将搜索时间简化
+         *
+         * Time complexity:O(n) Space complexity:O(n)
+         */
         HashMap<Integer, Integer> map = new HashMap<>(length);
         for (int i = 0; i < length; i++) {
             map.put(nums[i], i);
@@ -93,42 +132,40 @@ class Solution {
             }
         }
 
-        throw new IllegalArgumentException("Not Found");
+        throw new IllegalArgumentException(MSG_NOT_FOUND);
     }
-}
 
-/**
- * One-pass Hash Table
- *
- * 一边插入,一边搜索,循环降低为一次
- *
- * ERROR 1: 未考虑两个数字相同的情况,题目假设了答案只会有一个,所以搜索时用上即可
- *
- * 测试案例:[2,7,11,15] 9 [1, 2,7,11,15] 9 [3,2,4] 6 [3,3] 6 [1, 3, 3, 3] 6
- *
- * Time complexity:O(n) Space complexity:O(n) Runtime: 1ms Memory: 38.5 MB
- */
-class Solution {
-    public int[] twoSum(int[] nums, int target) {
+    /**
+     * One-pass Hash Table
+     *
+     * 一边插入,一边搜索,循环降低为一次
+     *
+     * ERROR 1: 未考虑两个数字相同的情况,题目假设了答案只会有一个,所以搜索时用上即可
+     *
+     * ERROR 2: 返回的顺序有误，经过测试才发现，所以测试非常必要
+     *
+     * Time complexity:O(n) Space complexity:O(n)
+     */
+    int[] twoSumSolution2(int[] nums, int target) {
         if (nums == null) {
-            throw new IllegalArgumentException("nums is null");
+            throw new IllegalArgumentException(MSG_NUMS_IS_NULL);
         }
 
         int length = nums.length;
 
         if (length < 2) {
-            throw new IllegalArgumentException("nums less than 2 element");
+            throw new IllegalArgumentException(MSG_NUMS_IS_LESS_THAN_TWO);
         }
 
         HashMap<Integer, Integer> map = new HashMap<>(length);
         for (int i = 0; i < length; i++) {
             int complement = target - nums[i];
             if (map.containsKey(complement) && map.get(complement) != i) {
-                return new int[] { i, map.get(complement) };
+                return new int[] { map.get(complement), i };
             }
             map.put(nums[i], i);
         }
 
-        throw new IllegalArgumentException("Not Found");
+        throw new IllegalArgumentException(MSG_NOT_FOUND);
     }
 }
