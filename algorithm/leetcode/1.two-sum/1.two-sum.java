@@ -102,6 +102,13 @@ class Solution {
         throw new IllegalArgumentException(MSG_NOT_FOUND);
     }
 
+    /**
+     * Two-pass Hash Table
+     *
+     * 利用hash table的查找复杂度是O(1)的特性,将搜索时间简化
+     *
+     * Time complexity:O(n) Space complexity:O(n)
+     */
     int[] twoSumSolution1(int[] nums, int target) {
         if (nums == null) {
             throw new IllegalArgumentException(MSG_NUMS_IS_NULL);
@@ -113,13 +120,6 @@ class Solution {
             throw new IllegalArgumentException(MSG_NUMS_IS_LESS_THAN_TWO);
         }
 
-        /**
-         * Two-pass Hash Table
-         *
-         * 利用hash table的查找复杂度是O(1)的特性,将搜索时间简化
-         *
-         * Time complexity:O(n) Space complexity:O(n)
-         */
         HashMap<Integer, Integer> map = new HashMap<>(length);
         for (int i = 0; i < length; i++) {
             map.put(nums[i], i);
