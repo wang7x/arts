@@ -29,7 +29,7 @@ class AddTwoNumbersSolution {
 
     public static void main(String[] args) {
         try {
-            Solution s = new Solution();
+            AddTwoNumbersSolution s = new AddTwoNumbersSolution();
 
             int[] result = ListNode.toArray(s.addTwoNumbers(ListNode.fromArray(new int[] { 2, 4, 3 }),
                     ListNode.fromArray(new int[] { 5, 6, 4 })));
