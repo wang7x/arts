@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.ArrayList;
 
@@ -32,21 +33,27 @@ class Solution {
 
             int[] result = ListNode.toArray(s.addTwoNumbers(ListNode.fromArray(new int[] { 2, 4, 3 }),
                     ListNode.fromArray(new int[] { 5, 6, 4 })));
-            LOGGER.info(Arrays.toString(result));
+            if (LOGGER.isLoggable(Level.INFO)) {
+                LOGGER.info(Arrays.toString(result));
+            }
             if (!Arrays.equals(result, new int[] { 7, 0, 8 })) {
                 throw new AssertionError();
             }
 
             result = ListNode
                     .toArray(s.addTwoNumbers(ListNode.fromArray(new int[] { 0 }), ListNode.fromArray(new int[] { 0 })));
-            LOGGER.info(Arrays.toString(result));
+            if (LOGGER.isLoggable(Level.INFO)) {
+                LOGGER.info(Arrays.toString(result));
+            }
             if (!Arrays.equals(result, new int[] { 0 })) {
                 throw new AssertionError();
             }
 
             result = ListNode.toArray(s.addTwoNumbers(ListNode.fromArray(new int[] { 9, 9, 9, 9, 9, 9, 9 }),
                     ListNode.fromArray(new int[] { 9, 9, 9, 9 })));
-            LOGGER.info(Arrays.toString(result));
+            if (LOGGER.isLoggable(Level.INFO)) {
+                LOGGER.info(Arrays.toString(result));
+            }
             if (!Arrays.equals(result, new int[] { 8, 9, 9, 9, 0, 0, 0, 1 })) {
                 throw new AssertionError();
             }
