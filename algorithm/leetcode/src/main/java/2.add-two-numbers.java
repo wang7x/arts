@@ -20,12 +20,12 @@ import java.util.ArrayList;
  *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
-class Solution {
+class AddTwoNumbersSolution {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         return addTwoNumbersSolution0(l1, l2);
     }
 
-    private static final Logger LOGGER = Logger.getLogger(Solution.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(AddTwoNumbersSolution.class.getName());
 
     public static void main(String[] args) {
         try {

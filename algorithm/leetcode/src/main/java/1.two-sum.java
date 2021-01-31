@@ -31,17 +31,17 @@ import java.util.logging.Logger;
  *
  *
  */
-class Solution {
+class TwoSumSolution {
 
     public int[] twoSum(int[] nums, int target) {
         return twoSumSolution2(nums, target);
     }
 
-    private static final Logger LOGGER = Logger.getLogger(Solution.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(TwoSumSolution.class.getName());
 
     public static void main(String[] args) {
         try {
-            Solution s = new Solution();
+            TwoSumSolution s = new TwoSumSolution();
 
             if (!Arrays.equals(s.twoSum(new int[] { 2, 7, 11, 15 }, 9), new int[] { 0, 1 })) {
                 throw new AssertionError();
